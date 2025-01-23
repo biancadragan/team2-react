@@ -1,34 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './styles/App.scss'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className = "image">
+     <body className="page">
+    <header>
+      <h1>¡Cuidado con Grogu!</h1>
+    </header>
+    <main className="page">
+      <section className="board">
+        <div className="cell"><div className="grogu">👣</div></div>
+        <div className="cell"></div>
+        <div className="cell"></div>
+        <div className="cell"></div>
+        <div className="cell"></div>
+        <div className="cell"></div>
+        <div className="cell"></div>
+      </section>
+
+      <section>
+        <button className="dice">Lanzar Dado</button>
+        <div className="game-status">En curso</div>
+      </section>
+
+      <section className="goods-container">
+        <div className="goods-item">🍪</div>
+        <div className="goods-item">🍪</div>
+        <div className="goods-item">🍪</div>
+      </section>
+      <section className="goods-container">
+        <div className="goods-item">🥚</div>
+        <div className="goods-item">🥚</div>
+        <div className="goods-item">🥚</div>
+      </section>
+      <section className="goods-container">
+        <div className="goods-item">🐸</div>
+        <div className="goods-item">🐸</div>
+        <div className="goods-item">🐸</div>
+      </section>
+      <section>
+        <button className="restart-button">Reiniciar Juego</button>
+      </section>
+    </main>
+  </body>
+    </div>
   )
 }
 
