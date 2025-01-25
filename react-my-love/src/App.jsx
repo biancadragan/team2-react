@@ -67,11 +67,6 @@ function App() {
         </section>
 
 
-      <section>
-        <button  onClick ={handleClick} className="dice">Lanzar Dado</button>
-        <div className="game-status">En curso</div>
-      </section>
-
         <section>
           <button onClick={rollDice} className="dice">Lanzar Dado</button>
           <div className="game-status">{gameStatus}</div>
