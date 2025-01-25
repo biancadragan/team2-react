@@ -1,6 +1,21 @@
 import './styles/App.scss'
 
 function App() {
+  
+  /*
+ const handleClick = (ev) => {
+  ev.preventDefault();
+
+  const randomNumber = getRandomNumber(4);
+
+  console.log(randomNumber);
+  
+ }
+ function getRandomNumber(max) { 
+  return Math.ceil(Math.random() * max); 
+}
+*/
+
 
 
   return (
@@ -21,7 +36,7 @@ function App() {
       </section>
 
       <section>
-        <button className="dice">Lanzar Dado</button>
+        <button  onClick ={handleClick} className="dice">Lanzar Dado</button>
         <div className="game-status">En curso</div>
       </section>
 
