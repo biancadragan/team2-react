@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './styles/App.scss';
 
 function App() {
-  
+
   /*
  const handleClick = (ev) => {
   ev.preventDefault();
@@ -24,20 +24,30 @@ function App() {
   const moveItem = (item) => {
     if (stock[item] > 0) {
       setStock({ ...stock, [item]: stock[item] - 1 });
-    }
-  };
-  
-  const moveGrogu = () => {
-    if (groguPosition < 6) {
-      setGroguPosition(groguPosition + 1);
+      checkGameOver();
     }
   };
 
-  
+  const moveGrogu = () => {
+    if (groguPosition < 6) {
+      setGroguPosition(groguPosition + 1);
+      checkGameOver();
+    }
+  };
+
+  const checkGameOver = () => {
+    if (groguPosition >= 6) {
+      setGameStatus("¡Grogu ha llegado al armario y se ha comido la mercancía! 😭");
+    } else if (stock.cookies === 0 && stock.eggs === 0 && stock.frogs === 0) {
+      setGameStatus("¡Misión cumplida! Has transportado toda la mercancía con éxito 🎉.");
+    }
+  };
+
+
   const rollDice = () => {
     const diceRoll = Math.floor(Math.random() * 4) + 1;
     console.log("Número del dado:", diceRoll);
-    
+
     if (diceRoll === 1) moveItem("cookies");
     if (diceRoll === 2) moveItem("eggs");
     if (diceRoll === 3) moveItem("frogs");
@@ -50,6 +60,8 @@ function App() {
     setGameStatus("En curso");
   };
 
+
+
   return (
     <div className="image page">
       <header>
@@ -57,15 +69,12 @@ function App() {
       </header>
       <main className="page">
         <section className="board">
-          <div className="cell"><div className="grogu">👣</div></div>
-          <div className="cell"></div>
-          <div className="cell"></div>
-          <div className="cell"></div>
-          <div className="cell"></div>
-          <div className="cell"></div>
-          <div className="cell"></div>
+          {[...Array(7)].map((_, index) => (
+            <div key={index} className="cell">
+              {groguPosition === index && <div className="grogu">👣</div>}
+            </div>
+          ))}
         </section>
-
 
         <section>
           <button onClick={rollDice} className="dice">Lanzar Dado</button>
