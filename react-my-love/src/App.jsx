@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './styles/App.scss';
+import spaceship from './images/ufo.jpg'
 
 function App() {
 
@@ -7,7 +8,7 @@ function App() {
   const [groguPosition, setGroguPosition] = useState(0);
   const [stock, setStock] = useState({ cookies: 3, eggs: 3, frogs: 3 });
   const [gameStatus, setGameStatus] = useState("En curso");
-  
+
 
   const moveItem = (item) => {
     if (stock[item] > 0) {
@@ -18,8 +19,8 @@ function App() {
 
   const moveGrogu = () => {
     if (groguPosition < 6) {
-      setGroguPosition(groguPosition + 1 );
-      setGameStatus("Avanza un paso Grogu"); 
+      setGroguPosition(groguPosition + 1);
+      setGameStatus("Avanza un paso Grogu");
       checkGameOver();
     }
   };
@@ -32,18 +33,42 @@ function App() {
     }
   };
 
-  
+
 
   const rollDice = () => {
     const diceRoll = Math.floor(Math.random() * 4) + 1;
     console.log("Número del dado:", diceRoll);
 
-    if (diceRoll === 1) moveItem("cookies");
-    if (diceRoll === 2) moveItem("eggs");
-    if (diceRoll === 3) moveItem("frogs");
+    if (diceRoll === 1) {
+      if (stock.cookies === 0) {
+        rollDice();
+      }
+      else {
+        moveItem("cookies");
+      }
+    }
+    if (diceRoll === 2) {
+      if (stock.cookies === 0) {
+        rollDice();
+      }
+      else {
+        moveItem("eggs");
+      }
+    }
+    if (diceRoll === 3) {
+      if (stock.cookies === 0) {
+        rollDice();
+      }
+      else {
+        moveItem("frogs");
+      }
+    }
+
     if (diceRoll === 4) moveGrogu();
+    checkGameOver();
 
   };
+
 
   const restartGame = () => {
     setGroguPosition(0);
@@ -64,7 +89,7 @@ function App() {
             <div key={index} className="cell">
               {groguPosition === index && <div className="grogu">👣</div>}
             </div>
-            
+
           ))};
         </section>
 
@@ -73,23 +98,31 @@ function App() {
           <div className="game-status">{gameStatus}</div>
         </section>
 
+        <div className="section-container">
+          <section className="spaceship">
+            <img src={spaceship}></img>
+          </section>
 
-        <section className="goods-container">
-          
-          <div className="goods-item">🍪</div>
-          <div className="goods-item">🍪</div>
-          <div className="goods-item">🍪</div>
-        </section>
-        <section className="goods-container">
-          <div className="goods-item">🥚</div>
-          <div className="goods-item">🥚</div>
-          <div className="goods-item">🥚</div>
-        </section>
-        <section className="goods-container">
-          <div className="goods-item">🐸</div>
-          <div className="goods-item">🐸</div>
-          <div className="goods-item">🐸</div>
-        </section>
+
+          <section>
+            <section className="goods-container">
+              {stock.cookies > 0 && <div className="goods-item">🍪</div>}
+              {stock.cookies > 1 && <div className="goods-item">🍪</div>}
+              {stock.cookies > 2 && <div className="goods-item">🍪</div>}
+            </section>
+            <section className="goods-container">
+              {stock.eggs > 0 && <div className="goods-item">🥚</div>}
+              {stock.eggs > 1 && <div className="goods-item">🥚</div>}
+              {stock.eggs > 2 && <div className="goods-item">🥚</div>}
+            </section>
+            <section className="goods-container">
+              {stock.frogs > 0 && <div className="goods-item">🐸</div>}
+              {stock.frogs > 1 && <div className="goods-item">🐸</div>}
+              {stock.frogs > 2 && <div className="goods-item">🐸</div>}
+            </section>
+          </section>
+        </div>
+
         <section>
           <button onClick={restartGame} className="restart-button">Reiniciar Juego</button>
         </section>
