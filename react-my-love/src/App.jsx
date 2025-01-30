@@ -90,7 +90,7 @@ function App() {
               {groguPosition === index && <div className="grogu">👣</div>}
             </div>
 
-          ))};
+          ))}
         </section>
 
         <section>
