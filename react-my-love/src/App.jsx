@@ -20,6 +20,7 @@ function App() {
   const [groguPosition, setGroguPosition] = useState(0);
   const [stock, setStock] = useState({ cookies: 3, eggs: 3, frogs: 3 });
   const [gameStatus, setGameStatus] = useState("En curso");
+  
 
   const moveItem = (item) => {
     if (stock[item] > 0) {
@@ -30,7 +31,8 @@ function App() {
 
   const moveGrogu = () => {
     if (groguPosition < 6) {
-      setGroguPosition(groguPosition + 1);
+      setGroguPosition(groguPosition + 1 );
+      setGameStatus("Avanza un paso Grogu"); 
       checkGameOver();
     }
   };
