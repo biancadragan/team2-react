@@ -3,19 +3,6 @@ import './styles/App.scss';
 
 function App() {
 
-  /*
- const handleClick = (ev) => {
-  ev.preventDefault();
-
-  const randomNumber = getRandomNumber(4);
-
-  console.log(randomNumber);
-  
- }
- function getRandomNumber(max) { 
-  return Math.ceil(Math.random() * max); 
-}
-*/
 
   const [groguPosition, setGroguPosition] = useState(0);
   const [stock, setStock] = useState({ cookies: 3, eggs: 3, frogs: 3 });
@@ -45,6 +32,7 @@ function App() {
     }
   };
 
+  
 
   const rollDice = () => {
     const diceRoll = Math.floor(Math.random() * 4) + 1;
@@ -54,6 +42,7 @@ function App() {
     if (diceRoll === 2) moveItem("eggs");
     if (diceRoll === 3) moveItem("frogs");
     if (diceRoll === 4) moveGrogu();
+
   };
 
   const restartGame = () => {
@@ -75,7 +64,8 @@ function App() {
             <div key={index} className="cell">
               {groguPosition === index && <div className="grogu">👣</div>}
             </div>
-          ))}
+            
+          ))};
         </section>
 
         <section>
@@ -85,6 +75,7 @@ function App() {
 
 
         <section className="goods-container">
+          
           <div className="goods-item">🍪</div>
           <div className="goods-item">🍪</div>
           <div className="goods-item">🍪</div>
